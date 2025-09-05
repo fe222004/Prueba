@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cliente;
+use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function store(Request $request){
+      public function store(Request $request){
 
         $request -> validate([
-            'nombre' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'cedula' => 'required',
             'telefono' => 'required',
             'direccion' => 'required'
         ]);
 
-        $cliente = new Cliente;
-        $cliente->nombre = $request -> nombre;
+        $cliente = new Cliente();
+        $cliente->name = $request -> name;
         $cliente->email = $request -> email;
         $cliente->cedula = $request -> cedula;
         $cliente->telefono = $request -> telefono;
@@ -31,6 +31,6 @@ class ClienteController extends Controller
     public function index(){
         $clientes = Cliente::all();
 
-        return $clientes;
+        return redirect()->route('cliente.index')->with('success','Tarea creada Correctamente');
     }
 }

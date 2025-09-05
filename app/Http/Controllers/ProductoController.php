@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    public function store(Request $request){
+     public function store(Request $request){
 
         $request -> validate([
             'name' => 'required',
@@ -25,7 +25,7 @@ class ProductoController extends Controller
     public function index(){
         $productos = Producto::all();
 
-        return $productos;
+     return redirect()->route('product.index')->with('success','Tarea creada Correctamente');
+
     }
 }
-
